@@ -1,30 +1,34 @@
+import requests
+import os
 import re
-from scholarly import scholarly
 
-# 🔹 Your Google Scholar name (ensure it's unique enough)
-SCHOLAR_NAME = "Your Name"  # Change this to your Scholar profile name
+API_KEY = os.getenv("SERPAPI_KEY")  # Fetch API key from GitHub Secrets
+AUTHOR_ID = "KKS2dsQAAAAJ"  # Replace with your Google Scholar ID
 
 def get_citation_count():
-    """Fetch citation count from Google Scholar"""
-    search_query = scholarly.search_author(SCHOLAR_NAME)
-    author = next(search_query)  # Get first result
-    author = scholarly.fill(author)  # Fetch full details
-    return author.get("citedby", "N/A")  # Get citations count
+    """Fetch citation count from SerpAPI"""
+    url = f"https://serpapi.com/search.json?engine=google_scholar_author&author_id={AUTHOR_ID}&api_key={API_KEY}"
+    
+    response = requests.get(url).json()
+    citations = response["cited_by"]["table"][0]["citations"]
+    h_index = response["cited_by"]["table"][1]["h_index"]
+    i10_index = response["cited_by"]["table"][2]["i10_index"]
 
-def update_readme(citations):
-    """Update README.md with the latest citation count"""
+    return citations, h_index, i10_index
+
+def update_readme(citations, h_index, i10_index):
+    """Update README.md with the latest citation stats"""
     with open("README.md", "r+", encoding="utf-8") as f:
         content = f.read()
-        updated_content = re.sub(
-            r"📚 Citations: \*\*(\d+)\*\*", 
-            f"📚 Citations: **{citations}**", 
-            content
-        )
+        updated_content = re.sub(r"📊 Citations: \*\*(\d+)\*\*", f"📊 Citations: **{citations}**", content)
+        updated_content = re.sub(r"📈 h-index: \*\*(\d+)\*\*", f"📈 h-index: **{h_index}**", updated_content)
+        updated_content = re.sub(r"🏅 i10-index: \*\*(\d+)\*\*", f"🏅 i10-index: **{i10_index}**", updated_content)
+
         f.seek(0)
         f.write(updated_content)
         f.truncate()
 
 if __name__ == "__main__":
-    citation_count = get_citation_count()
-    print(f"Updating README with {citation_count} citations...")
-    update_readme(citation_count)
+    citations, h_index, i10_index = get_citation_count()
+    print(f"Updating README with Citations: {citations}, h-index: {h_index}, i10-index: {i10_index}")
+    update_readme(citations, h_index, i10_index)

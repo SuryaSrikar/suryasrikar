@@ -1,32 +1,17 @@
-name: Update Citations in README
+name: Update README
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # Runs daily at midnight UTC
-  workflow_dispatch:  # Allow manual runs
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
 
 jobs:
-  update-readme:
+  build:
     runs-on: ubuntu-latest
+    name: Update this repo's README with recent activity
+
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Set Up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.9"
-
-      - name: Install Dependencies
-        run: pip install scholarly
-
-      - name: Run Citation Update Script
-        run: python update_readme.py
-
-      - name: Commit and Push Changes
-        run: |
-          git config --local user.email "github-actions@github.com"
-          git config --local user.name "GitHub Actions"
-          git add README.md
-          git commit -m "Update citation count in README" || echo "No changes to commit"
-          git push
+      - uses: actions/checkout@v2
+      - uses: jamesgeorge007/github-activity-readme@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
