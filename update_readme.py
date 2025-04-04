@@ -31,4 +31,4 @@ def update_readme(citations, h_index, i10_index):
 if __name__ == "__main__":
     citations, h_index, i10_index = get_citation_count()
     print(f"Updating README with Citations: {citations}, h-index: {h_index}, i10-index: {i10_index}")
-    update_readme(citations, h_index, i10_index)
+    update_readme(citations['all'], h_index['all'], i10_index['all'])
