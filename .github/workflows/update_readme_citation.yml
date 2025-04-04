@@ -1,12 +1,12 @@
-name: Update README with Citation Stats
+name: Update README Google Citations
 
 on:
   schedule:
-    - cron: '0 */4 * * *'  # Runs every 4 hours
+    - cron: '0 */12 * * *'  # Runs every 12 hours
   workflow_dispatch:
 
 jobs:
-  update-readme:
+  update-readme-google-citations:
     runs-on: ubuntu-latest
 
     steps:
@@ -33,3 +33,5 @@ jobs:
           git add README.md
           git commit -m "Updated citation stats" || echo "No changes to commit"
           git push
+  
+  
