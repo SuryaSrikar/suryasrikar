@@ -1,4 +1,4 @@
-### Hi, I’m Surya Srikar
+## Hi, I’m Surya Srikar
 
 - 💼 I am working as Senior Engineer at VMware by Broadcom
 - 💬 You can reach me out on Kubernetes Slack with handle @ssrikar
@@ -7,7 +7,7 @@
 ## 📚 Google Scholar
 You can find my research work and publications on [Google Scholar](https://scholar.google.com/citations?user=KKS2dsQAAAAJ&hl=en).
 
-📊 Citations: **110**
+📊 Citations: **104**
 
 📈 h-index: **5**
 
@@ -15,7 +15,9 @@ You can find my research work and publications on [Google Scholar](https://schol
 
 
 ### GitHub Stats
-![Github stats](https://github-readme-stats.vercel.app/api?username=SuryaSrikar&count_private=true&show_icons=true&theme=tokyonight)
+![https://github-readme-stats.vercel.app/api?username=SuryaSrikar&show_icons=true](https://github-readme-stats.vercel.app/api?username=SuryaSrikar&show_icons=true&theme=dark&hide_border=true&show=reviews,prs_merged,prs_merged_percentage)
+![https://github-readme-stats.vercel.app/api/top-langs/?username=SuryaSrikar&hide=html&layout=compact&layout=donut](https://github-readme-stats.vercel.app/api/top-langs/?username=SuryaSrikar&hide=html&layout=compact&theme=dark&hide_border=true)
+
 
 ### GitHub Activity 
 <!--START_SECTION:activity-->
