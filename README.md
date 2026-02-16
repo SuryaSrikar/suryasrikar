@@ -7,7 +7,7 @@
 ## 📚 Google Scholar
 You can find my research work and publications on [Google Scholar](https://scholar.google.com/citations?user=KKS2dsQAAAAJ&hl=en).
 
-📊 Citations: **66**
+📊 Citations: **67**
 
 📈 h-index: **5**
 
